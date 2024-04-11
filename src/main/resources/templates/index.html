@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDos</title>
+</head>
+<body>
+<div>
+    <h1>Добавить задачу</h1>
+    <form th:action="@{/add}" th:method="post" th:object="${ToDoItem}">
+        <label for="description">Название</label>
+        <input id="description" type="text" name="description">
+        <label for="subtasksIds">ID подзадач</label>
+        <input id="subtasksIds" type="text" name="subtasksIds">
+        <label for="status">Статус</label>
+        <select id="status" name="status">
+            <option value="NOT_STARTED">не начато</option>
+            <option value="IN_PROGRESS">в процессе</option>
+            <option value="DONE">сделано</option>
+        </select>
+        <input type="submit" value="Добавить">
+    </form>
+</div>
+<div>
+    <h1>Список задач</h1>
+    <p th:each="item : ${todos}">
+        <span th:text="${item}"></span>
+        <button th:onclick="|window.location.href='/delete/${item.id}'|">Удалить</button>
+    </p>
+</div>
+</body>
+</html>

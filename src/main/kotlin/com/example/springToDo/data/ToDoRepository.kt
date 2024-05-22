@@ -1,5 +1,6 @@
 package com.example.springToDo.data
 
-import org.springframework.data.jpa.repository.JpaRepository
+import com.example.springToDo.data.model.ToDoItem
+import org.springframework.data.mongodb.repository.MongoRepository
 
-interface ToDoRepository : JpaRepository<ToDoItem, Long>
+interface ToDoRepository : MongoRepository<ToDoItem, Long>

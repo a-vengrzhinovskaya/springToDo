@@ -1,16 +1,19 @@
 package com.example.springToDo
 
-import com.example.springToDo.data.ToDoItem
 import com.example.springToDo.data.ToDoRepository
+import com.example.springToDo.data.model.ToDoItem
 import jakarta.annotation.PostConstruct
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories
 
 @SpringBootApplication
+@EnableMongoRepositories
 class SpringToDoApplication {
     @Autowired
     lateinit var toDoRepository: ToDoRepository
+
 
     @PostConstruct
     fun initRepository() {
@@ -21,7 +24,7 @@ class SpringToDoApplication {
         toDoRepository.save(
             ToDoItem(
                 description = "with subtask",
-                subtasksIds = listOf(todos.toList().random().id.toString())
+                subtasksIds = listOf(todos.toList().random().id)
             )
         )
     }

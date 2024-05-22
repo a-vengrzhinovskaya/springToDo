@@ -30,6 +30,12 @@ dependencies {
 
 	// Swagger
 	implementation("io.springfox:springfox-boot-starter:3.0.0")
+
+	// SpringDoc
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
+
+	//Mongo
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 }
 
 tasks.withType<KotlinCompile> {
